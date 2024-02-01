@@ -1,5 +1,6 @@
 #include <stdio.h> /* printf and fprintf */
 #include <SDL2/SDL.h> /* macOS- and GNU/Linux-specific */
+#include <SDL2/SDL_image.h>
 #include "main.h"
 
 /* Sets constants */
