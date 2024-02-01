@@ -23,6 +23,6 @@
 
 `./sdl_demo`
 
-![](https://github.com/lenhatquang2512/sdl2_music_project.git/blob/master/fso.png)
+![](https://github.com/lenhatquang2512/sdl2_music_project.git/blob/main/fso.png)
 
 Please give us a Star if you find this helpful !
