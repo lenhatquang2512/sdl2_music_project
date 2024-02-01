@@ -25,7 +25,7 @@
 
 * Please run in **order**:
 
-```
+```sh
 mkdir build
 
 cd build
@@ -42,7 +42,7 @@ make
 To run this project in VSCode with CMake extension enabled, you should configure CMake to use 'UNIX Makefiles'
 for generator by configuring in USER settings.json:
 
-```
+```cmake
 "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 
 "cmake.generator": "Unix Makefiles",
