@@ -2,6 +2,8 @@
 #include <SDL2/SDL.h> /* macOS- and GNU/Linux-specific */
 #include <SDL2/SDL_image.h>
 #include "main.h"
+// #include "SDL_gpu.h"
+
 
 /* Sets constants */
 #define WIDTH 800

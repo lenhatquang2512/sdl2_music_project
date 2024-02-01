@@ -53,7 +53,7 @@ for generator by configuring in USER settings.json:
 
 ![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/fso.png)
 
-<!-- ![](https://github.com/lenhatquang2512/fso_training_CPP_Code_test/blob/master/fso.png) -->
+<!-- ![](https://github.com/lenhatquang2512/fso_training_CPP_Code_test/blob/master/img/fso.png) -->
 
 **Please give us a Star if you find this helpful !**
 
