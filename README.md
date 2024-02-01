@@ -51,7 +51,7 @@ for generator by configuring in USER settings.json:
 ```
 **Hit F7 to build and F5 to run**. 
 
-![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/fso.png)
+![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/img/fso.png)
 
 <!-- ![](https://github.com/lenhatquang2512/fso_training_CPP_Code_test/blob/master/img/fso.png) -->
 
