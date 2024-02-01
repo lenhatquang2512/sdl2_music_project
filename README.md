@@ -47,7 +47,9 @@ for generator by configuring in USER settings.json:
 "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 
 "cmake.generator": "Unix Makefiles",
+
 ```
+**Hit F7 to build and F5 to run**. 
 
 ![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/fso.png)
 
