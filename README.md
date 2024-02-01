@@ -23,6 +23,8 @@
 
 `./sdl_demo`
 
-![](https://github.com/lenhatquang2512/sdl2_music_project.git/blob/main/fso.png)
+![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/fso.png)
+
+<!-- ![](https://github.com/lenhatquang2512/fso_training_CPP_Code_test/blob/master/fso.png) -->
 
 Please give us a Star if you find this helpful !
