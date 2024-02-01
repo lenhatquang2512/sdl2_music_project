@@ -13,7 +13,7 @@
 
 `sudo apt-get install cmake`
 
-* SDL2 add-ons libraries (OPTIONAL, only installed if you want to work with those extended libraries)
+* SDL2 add-ons libraries (**OPTIONAL**, *only installed if you want to work with those extended libraries*<br>)
 
 `sudo apt install libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev libsdl2-gfx-dev`
 
@@ -52,7 +52,7 @@ for generator by configuring in USER settings.json:
 
 <!-- ![](https://github.com/lenhatquang2512/fso_training_CPP_Code_test/blob/master/fso.png) -->
 
-Please give us a Star if you find this helpful !
+**Please give us a Star if you find this helpful !**<br>
 
 [CMake]: https://cmake.org
 [SDL2]: https://www.libsdl.org
