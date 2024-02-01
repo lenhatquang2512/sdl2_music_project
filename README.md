@@ -3,6 +3,7 @@
 ### The software needs to be installed to test and evaluate the quality
 * gcc/g++ in Linux 
 * SDL2.0
+`sudo apt-get install libsdl2-dev`
 * CMake (used to compile the entire file if using CMakeLists)
 
 ### General description
