@@ -24,6 +24,15 @@
 
 `./sdl_demo`
 
+## Notes
+
+To run this project in VSCode with CMake extension enabled, you should configure CMake to use 'UNIX Makefiles'
+for generator by configuring in USER settings.json:
+
+   `"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",`
+
+   ` "cmake.generator": "Unix Makefiles",`
+
 ![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/fso.png)
 
 <!-- ![](https://github.com/lenhatquang2512/fso_training_CPP_Code_test/blob/master/fso.png) -->
