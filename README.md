@@ -42,9 +42,11 @@ make
 To run this project in VSCode with CMake extension enabled, you should configure CMake to use 'UNIX Makefiles'
 for generator by configuring in USER settings.json:
 
-   ```"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+```
+"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 
-    "cmake.generator": "Unix Makefiles",```
+"cmake.generator": "Unix Makefiles",
+```
 
 ![](https://github.com/lenhatquang2512/sdl2_music_project/blob/main/fso.png)
 
