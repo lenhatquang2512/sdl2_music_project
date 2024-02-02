@@ -1,6 +1,5 @@
 #include <stdio.h> /* printf and fprintf */
-#include <SDL2/SDL.h> /* macOS- and GNU/Linux-specific */
-#include <SDL2/SDL_image.h>
+#include <iostream>
 #include "main.h"
 // #include "SDL_gpu.h"
 
@@ -8,7 +7,7 @@
 /* Sets constants */
 #define WIDTH 800
 #define HEIGHT 600
-#define DELAY 3000
+#define DELAY 1000
 
 int main (int argc, char **argv)
 {
