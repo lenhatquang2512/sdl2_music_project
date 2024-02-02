@@ -33,7 +33,7 @@ cd build
 
 cmake ..
 
-make
+make -j4
 
 ./sdl_demo
 ```
