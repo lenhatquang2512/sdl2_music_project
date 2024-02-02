@@ -7,6 +7,7 @@
 #include <memory>
 
 namespace APP{
+template <typename T>
 class FirstGraphics{
 public:
     explicit FirstGraphics(void);
@@ -16,8 +17,9 @@ public:
 
 private:
     //screen dimension constant
-    int screen_width;
-    int screen_height;
+    T screen_width;
+    T screen_height;
+    T delay;
 
     //The window we'll be rendering to
     std::shared_ptr<SDL_Window> window; 

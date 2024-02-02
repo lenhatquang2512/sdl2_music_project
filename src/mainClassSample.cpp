@@ -9,15 +9,18 @@ struct SDLSurfaceDeleter {
     }
 };
 
-APP::FirstGraphics::FirstGraphics(void):
+template <typename T>
+APP::FirstGraphics<T>::FirstGraphics(void):
     screen_width(640),
     screen_height(480),
+    delay(2000),
     window(nullptr),
     screenSurface(nullptr){
         std::cout << "Constructor called" << std::endl;
 }
 
-void APP::FirstGraphics::process(void){
+template <typename T>
+void APP::FirstGraphics<T>::process(void){
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         std::cerr << "SDL could not initialize! SDL_Error: "
         << SDL_GetError() << std::endl;
@@ -42,27 +45,31 @@ void APP::FirstGraphics::process(void){
 			SDL_UpdateWindowSurface( window.get() );
 
             //Hack to get window to stay up
-            SDL_Event e; 
-            bool quit = false; 
-            while( quit == false ){ 
-                while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
+            // SDL_Event e; 
+            // bool quit = false; 
+            // while( quit == false ){ 
+            //     while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
+
+            //Add delay
+            SDL_Delay(delay);
 		}
 	}
             
 }
 
-APP::FirstGraphics::~FirstGraphics(void){
+template <typename T>
+APP::FirstGraphics<T>::~FirstGraphics(void) noexcept{
     //Destroy window
 	// SDL_DestroyWindow( window.get() );
 
 	// //Quit SDL subsystems
-	SDL_Quit();
+	// SDL_Quit();
 }
 
 
 int main(int argc, char  **argv)
 {
-    APP::FirstGraphics myObj;
+    APP::FirstGraphics<int> myObj;
 
     myObj.process();
 
