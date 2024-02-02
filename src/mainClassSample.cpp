@@ -22,18 +22,18 @@ void APP::FirstGraphics::process(void){
         std::cerr << "SDL could not initialize! SDL_Error: "
         << SDL_GetError() << std::endl;
     }else{
-        SDL_Window* tempWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, 
-        SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN );
 
-        window = std::make_shared<SDL_Window>(tempWindow, SDL_DestroyWindow);
+        // window = std::make_shared<SDL_Window>(tempWindow, SDL_DestroyWindow);  //ERROR
+
+        window  = std::shared_ptr<SDL_Window>(SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, 
+        SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN ), SDL_DestroyWindow);
 
         if(window == nullptr){
             std::cerr << "Window could not be created! SDL_Error: "
                  << SDL_GetError() << std::endl;
         }else{
             //Get window surface
-            SDL_Surface* screenSurfaceTemp =  SDL_GetWindowSurface( window.get() );
-            screenSurface =std::make_shared<SDL_Surface> (screenSurfaceTemp, SDLSurfaceDeleter{});
+            screenSurface =std::shared_ptr<SDL_Surface>(SDL_GetWindowSurface( window.get()), SDLSurfaceDeleter{});
 
             //Fill the surface white
 			SDL_FillRect( screenSurface.get(), nullptr, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
@@ -60,7 +60,7 @@ APP::FirstGraphics::~FirstGraphics(void){
 }
 
 
-int main(int argc, char const *argv[])
+int main(int argc, char  **argv)
 {
     APP::FirstGraphics myObj;
 
