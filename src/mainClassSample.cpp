@@ -1,5 +1,3 @@
-#include <stdio.h> /* printf and fprintf */
-#include <iostream>
 #include "mainClassSample.h"
 
 // Custom deleter for SDL_Surface
@@ -29,14 +27,15 @@ void APP::FirstGraphics<T>::process(void){
         // window = std::make_shared<SDL_Window>(tempWindow, SDL_DestroyWindow);  //ERROR
 
         window  = std::shared_ptr<SDL_Window>(SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, 
-        SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN ), SDL_DestroyWindow);
+        SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN ), SDL_DestroyWindow); //use custom deleter
 
         if(window == nullptr){
             std::cerr << "Window could not be created! SDL_Error: "
                  << SDL_GetError() << std::endl;
         }else{
             //Get window surface
-            screenSurface =std::shared_ptr<SDL_Surface>(SDL_GetWindowSurface( window.get()), SDLSurfaceDeleter{});
+            // screenSurface =std::shared_ptr<SDL_Surface>(SDL_GetWindowSurface( window.get()), SDLSurfaceDeleter{});
+            screenSurface =std::shared_ptr<SDL_Surface>(SDL_GetWindowSurface( window.get()), SDL_FreeSurface);
 
             //Fill the surface white
 			SDL_FillRect( screenSurface.get(), nullptr, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
@@ -59,16 +58,16 @@ void APP::FirstGraphics<T>::process(void){
 
 template <typename T>
 APP::FirstGraphics<T>::~FirstGraphics(void) noexcept{
+    std::cout << "Destructor called" << std::endl;
     //Destroy window
-	// SDL_DestroyWindow( window.get() );
+	// SDL_DestroyWindow( window.get() ); //Core dump if try to run because we use share pointer
 
 	// //Quit SDL subsystems
 	// SDL_Quit();
 }
 
 
-int main(int argc, char  **argv)
-{
+int main(int argc, char  **argv) {
     APP::FirstGraphics<int> myObj;
 
     myObj.process();

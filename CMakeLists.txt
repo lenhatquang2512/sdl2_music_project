@@ -15,8 +15,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_net REQUIRED)
+find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_image REQUIRED)
-# find_package(SDL2_ttf REQUIRED)
+find_package(SDL2_gfx REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 
 # set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${project_SOURCE_DIR}/cmake")
 
@@ -24,7 +27,7 @@ include_directories(
     include
     ${SDL2_INCLUDE_DIRS}
     ${SDL2_IMAGE_INCLUDE_DIR}
-    # ${SDL2_TTF_INCLUDE_DIR})
+    ${SDL2_TTF_INCLUDE_DIR}
 )
 
 set(SDL_PROJECT_SOURCES     
@@ -37,20 +40,22 @@ set(EXECUTABLE sdl_demo)
 add_executable(${EXECUTABLE} ${SDL_PROJECT_SOURCES})
 target_link_libraries(${EXECUTABLE} PUBLIC 
                                             # ${SDL2_LIBRARIES} 
-                                            SDL2::Main SDL2::Image
+                                            SDL2::Main SDL2::Image GL
+                                            SDL2::Net SDL2::Mixer SDL2::Image SDL2::TTF SDL2::GFX 
                                             # ${SDL2_IMAGE_LIBRARIES}
                                             # ${SDL2_TTF_LIBRARIES}
 )
+target_include_directories(${EXECUTABLE} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 
-add_executable(main src/main.cpp)
-target_link_libraries(main PUBLIC SDL2::Main GL)
+# Individual linking for each separate file
 add_executable(image_fetch_sample src/image_fetch_sample.cpp)
-target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image)
+target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
 add_executable(health_bar_animation src/health_bar_animation.cpp)
-target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image)
+target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
 add_executable(mainClassSample src/mainClassSample.cpp)
-target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image)
-# Specify the include directories for the target
+target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL)
 target_include_directories(mainClassSample PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
