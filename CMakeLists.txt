@@ -53,20 +53,20 @@ target_include_directories(${EXECUTABLE} PUBLIC
 
 # Individual linking for each separate file
 
-# add_executable(image_fetch_sample src/sdl2Interface.cpp src/image_fetch_sample.cpp)
-# target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
-# target_include_directories(image_fetch_sample PUBLIC
-#     ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
-# add_executable(image_fetch_sample src/image_fetch_sample.cpp)
-# target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
-# add_executable(health_bar_animation src/health_bar_animation.cpp)
-# target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
-# add_executable(mainClassSample src/mainClassSample.cpp)
-# target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL)
-# target_include_directories(mainClassSample PUBLIC
-#     ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
+add_executable(image_fetch_sample src/sdl2Interface.cpp src/image_fetch_sample.cpp)
+target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
+target_include_directories(image_fetch_sample PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+add_executable(image_fetch_sample src/image_fetch_sample.cpp)
+target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
+add_executable(health_bar_animation src/health_bar_animation.cpp)
+target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
+add_executable(mainClassSample src/mainClassSample.cpp)
+target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL)
+target_include_directories(mainClassSample PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 
 
 enable_testing()
