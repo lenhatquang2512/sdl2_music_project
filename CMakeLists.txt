@@ -30,6 +30,9 @@ include_directories(
     ${SDL2_TTF_INCLUDE_DIR}
 )
 
+set(lib_names SDL2_First_Graphics)
+add_library(SDL2_First_Graphics SHARED lib/mainClassSampleLib.cpp) #do not need header files in include
+
 set(SDL_PROJECT_SOURCES     
                         # src/main.cpp
                         # src/bitmap_sample.cpp
@@ -42,6 +45,7 @@ target_link_libraries(${EXECUTABLE} PUBLIC
                                             # ${SDL2_LIBRARIES} 
                                             SDL2::Main SDL2::Image GL
                                             SDL2::Net SDL2::Mixer SDL2::Image SDL2::TTF SDL2::GFX 
+                                            ${lib_names} 
                                             # ${SDL2_IMAGE_LIBRARIES}
                                             # ${SDL2_TTF_LIBRARIES}
 )
@@ -54,11 +58,11 @@ add_executable(image_fetch_sample src/image_fetch_sample.cpp)
 target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
 add_executable(health_bar_animation src/health_bar_animation.cpp)
 target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
-add_executable(mainClassSample src/mainClassSample.cpp)
-target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL)
-target_include_directories(mainClassSample PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+# add_executable(mainClassSample src/mainClassSample.cpp)
+# target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL)
+# target_include_directories(mainClassSample PUBLIC
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include
+# )
 
 enable_testing()
 add_test(NAME ${EXECUTABLE} COMMAND ${EXECUTABLE})
