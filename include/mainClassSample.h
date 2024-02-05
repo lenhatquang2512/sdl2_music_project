@@ -7,15 +7,16 @@
 #include <memory>
 
 namespace APP{
-template <typename T>
+template<typename T>
 class FirstGraphics{
 public:
     explicit FirstGraphics(void);
+    FirstGraphics(T, T);
     ~FirstGraphics(void) noexcept;
     void process(void);
 
 
-private:
+protected:
     //screen dimension constant
     T screen_width;
     T screen_height;
@@ -27,5 +28,12 @@ private:
      //The surface contained by the window
     std::shared_ptr<SDL_Surface> screenSurface; 
 
+};
+
+// Custom deleter for SDL_Surface
+struct SDLSurfaceDeleter {
+    void operator()(SDL_Surface* surface) const {
+        SDL_FreeSurface(surface);
+    }
 };
 }

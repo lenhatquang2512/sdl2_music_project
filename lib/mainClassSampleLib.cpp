@@ -1,13 +1,6 @@
 #include "mainClassSample.h"
 
-// Custom deleter for SDL_Surface
-struct SDLSurfaceDeleter {
-    void operator()(SDL_Surface* surface) const {
-        SDL_FreeSurface(surface);
-    }
-};
 
-template <typename T>
 APP::FirstGraphics<T>::FirstGraphics(void):
     screen_width(640),
     screen_height(480),
@@ -15,6 +8,17 @@ APP::FirstGraphics<T>::FirstGraphics(void):
     window(nullptr),
     screenSurface(nullptr){
         std::cout << "Constructor called" << std::endl;
+}
+
+
+template<typename T>
+APP::FirstGraphics<T>::FirstGraphics(T width, T height):
+    screen_width(width),
+    screen_height(height),
+    delay(2000),
+    window(nullptr),
+    screenSurface(nullptr){
+        std::cout << "Constructor args called" << std::endl;
 }
 
 template <typename T>
@@ -55,6 +59,7 @@ void APP::FirstGraphics<T>::process(void){
 	}
             
 }
+
 
 template <typename T>
 APP::FirstGraphics<T>::~FirstGraphics(void) noexcept{

@@ -2,10 +2,9 @@
 
 
 int main(int argc, char  **argv) {
-    APP::FirstGraphics<int> myObj;
+    APP::FirstGraphics<T> myObj;
 
     myObj.process();
 
     return 0;
 }
-

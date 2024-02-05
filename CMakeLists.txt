@@ -37,7 +37,8 @@ set(SDL_PROJECT_SOURCES
                         # src/main.cpp
                         # src/bitmap_sample.cpp
                         # src/health_bar_animation.cpp
-                        src/mainClassSample.cpp
+                        # src/mainClassSample.cpp
+                        src/image_fetch_sample.cpp
 )
 set(EXECUTABLE sdl_demo)
 add_executable(${EXECUTABLE} ${SDL_PROJECT_SOURCES})
@@ -54,8 +55,8 @@ target_include_directories(${EXECUTABLE} PUBLIC
 )
 
 # Individual linking for each separate file
-add_executable(image_fetch_sample src/image_fetch_sample.cpp)
-target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
+# add_executable(image_fetch_sample src/image_fetch_sample.cpp)
+# target_link_libraries(image_fetch_sample PUBLIC SDL2::Main SDL2::Image GL)
 add_executable(health_bar_animation src/health_bar_animation.cpp)
 target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
 # add_executable(mainClassSample src/mainClassSample.cpp)
