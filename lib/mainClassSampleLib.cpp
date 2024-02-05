@@ -1,6 +1,6 @@
 #include "mainClassSample.h"
 
-template<typename T>
+
 APP::FirstGraphics<T>::FirstGraphics(void):
     screen_width(640),
     screen_height(480),
@@ -9,6 +9,7 @@ APP::FirstGraphics<T>::FirstGraphics(void):
     screenSurface(nullptr){
         std::cout << "Constructor called" << std::endl;
 }
+
 
 template<typename T>
 APP::FirstGraphics<T>::FirstGraphics(T width, T height):
@@ -20,7 +21,7 @@ APP::FirstGraphics<T>::FirstGraphics(T width, T height):
         std::cout << "Constructor args called" << std::endl;
 }
 
-template<typename T>
+template <typename T>
 void APP::FirstGraphics<T>::process(void){
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         std::cerr << "SDL could not initialize! SDL_Error: "
@@ -59,7 +60,8 @@ void APP::FirstGraphics<T>::process(void){
             
 }
 
-template<typename T>
+
+template <typename T>
 APP::FirstGraphics<T>::~FirstGraphics(void) noexcept{
     std::cout << "Destructor called" << std::endl;
     //Destroy window
