@@ -6,33 +6,12 @@
 #include <SDL2/SDL_opengl.h>
 #include <iostream>
 #include <memory>
+#include "mainClassSample.h"
 
 namespace ImageApp{
-template <typename T>
-class FirstGraphics{
-public:
-    FirstGraphics();
-    FirstGraphics(T width, T height);
-    ~FirstGraphics(void) noexcept;
-    void process(void);
-
-
-protected:
-    //screen dimension constant
-    T screen_width;
-    T screen_height;
-    T delay;
-
-    //The window we'll be rendering to
-    std::shared_ptr<SDL_Window> window; 
-
-     //The surface contained by the window
-    std::shared_ptr<SDL_Surface> screenSurface; 
-
-};
 
 template<typename T>
-class Imagefetch : public ImageApp::FirstGraphics<T>
+class Imagefetch : public APP::FirstGraphics<T>
 {
 public:
     Imagefetch();

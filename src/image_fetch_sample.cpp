@@ -1,31 +1,30 @@
 #include "image_fetch_sample.h"
 
 // Custom deleter for SDL_Surface
-struct SDLSurfaceDeleter {
-    void operator()(SDL_Surface* surface) const {
-        SDL_FreeSurface(surface);
-    }
-};
+// struct SDLSurfaceDeleter {
+//     void operator()(SDL_Surface* surface) const {
+//         SDL_FreeSurface(surface);
+//     }
+// };
 
-template <typename T>
-ImageApp::FirstGraphics<T>::FirstGraphics()
-    :FirstGraphics<T>{640, 480}
-    {
-        std::cout << "Constructor called" << std::endl;
+template<typename T>
+ImageApp::Imagefetch<T>::Imagefetch(T width, T height)
+    :APP::FirstGraphics<T>::FirstGraphics(width, height), 
+    pngSurface{nullptr}
+{
+    std::cout << "Image fetch argc constructor called" << std::endl;
 }
 
-template <typename T>
-ImageApp::FirstGraphics<T>::FirstGraphics(T width, T height):
-    screen_width(width),
-    screen_height(height),
-    delay(2000),
-    window(nullptr),
-    screenSurface(nullptr){
-        std::cout << "Constructor with arguments called" << std::endl;
+template<typename T>
+ImageApp::Imagefetch<T>::Imagefetch():
+    APP::FirstGraphics<T>::FirstGraphics(),
+    pngSurface{nullptr}
+{
+    std::cout << "Image fetch no-argc constructor called" << std::endl;
 }
 
-template <typename T>
-void ImageApp::FirstGraphics<T>::process(void){
+template<typename T>
+void ImageApp::Imagefetch<T>::process(void){
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         std::cerr << "SDL could not initialize! SDL_Error: "
         << SDL_GetError() << std::endl;
@@ -33,10 +32,10 @@ void ImageApp::FirstGraphics<T>::process(void){
 
         // window = std::make_shared<SDL_Window>(tempWindow, SDL_DestroyWindow);  //ERROR
 
-        window  = std::shared_ptr<SDL_Window>(SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, 
-        SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height, SDL_WINDOW_SHOWN ), SDL_DestroyWindow); //use custom deleter
+        APP::FirstGraphics<T>::window  = std::shared_ptr<SDL_Window>(SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, 
+        SDL_WINDOWPOS_UNDEFINED, APP::FirstGraphics<T>::screen_width, APP::FirstGraphics<T>::screen_height, SDL_WINDOW_SHOWN ), SDL_DestroyWindow); //use custom deleter
 
-        if(window == nullptr){
+        if(APP::FirstGraphics<T>::window == nullptr){
             std::cerr << "Window could not be created! SDL_Error: "
                  << SDL_GetError() << std::endl;
         }
@@ -62,43 +61,13 @@ void ImageApp::FirstGraphics<T>::process(void){
             }
             else
             {
-                screenSurface = std::shared_ptr<SDL_Surface>(SDL_GetWindowSurface( window.get()), SDLSurfaceDeleter{});
+                APP::FirstGraphics<T>::screenSurface = std::shared_ptr<SDL_Surface>(SDL_GetWindowSurface( APP::FirstGraphics<T>::window.get()),SDL_FreeSurface);
             }
         }
     }
-            
-}
-
-template <typename T>
-ImageApp::FirstGraphics<T>::~FirstGraphics(void) noexcept{
-    std::cout << "Destructor called" << std::endl;
-    //Destroy window
-    // SDL_DestroyWindow( window.get() ); //Core dump if try to run because we use share pointer
-}
-
-
-template<typename T>
-ImageApp::Imagefetch<T>::Imagefetch(T width, T height)
-    :FirstGraphics<T>(width, height), 
-    pngSurface{nullptr}
-{
-    std::cout << "Image fetch argc constructor called" << std::endl;
 }
 
 template<typename T>
-ImageApp::Imagefetch<T>::Imagefetch():
-    FirstGraphics<T>(),
-    pngSurface{nullptr}
-{
-    std::cout << "Image fetch no-argc constructor called" << std::endl;
-}
-
-template <typename T>
-void ImageApp::Imagefetch<T>::process(void){
-    FirstGraphics<T>::process();
-}
-
-template <typename T>
 void ImageApp::Imagefetch<T>::loadMedia(std::string &path)
 {
    pngSurface = loadSurface( path );
@@ -109,7 +78,7 @@ void ImageApp::Imagefetch<T>::loadMedia(std::string &path)
 }
    
 
-template <typename T>
+template<typename T>
 std::shared_ptr<SDL_Surface> ImageApp::Imagefetch<T>::loadSurface(const std::string &path)
 {
     // The final optimized image
@@ -124,7 +93,7 @@ std::shared_ptr<SDL_Surface> ImageApp::Imagefetch<T>::loadSurface(const std::str
     else
     {
         // Convert surface to screen format
-        optimizedSurface = std::shared_ptr<SDL_Surface>{SDL_ConvertSurface( loadedSurface.get(), ImageApp::FirstGraphics<T>::screenSurface->format, 0)};
+        optimizedSurface = std::shared_ptr<SDL_Surface>{SDL_ConvertSurface( loadedSurface.get(), APP::FirstGraphics<T>::screenSurface->format, 0)};
         if (optimizedSurface == nullptr)
         {
             std::cout << "Unable to optimized image" << path << "SDL Error: " << SDL_GetError() << std::endl;
@@ -133,14 +102,14 @@ std::shared_ptr<SDL_Surface> ImageApp::Imagefetch<T>::loadSurface(const std::str
     return optimizedSurface;
 }
 
-template <typename T>
+template<typename T>
 void ImageApp::Imagefetch<T>::updateSurface()
 {
-    SDL_BlitSurface( pngSurface.get(), NULL, ImageApp::FirstGraphics<T>::screenSurface.get(), NULL );
-    SDL_UpdateWindowSurface( ImageApp::FirstGraphics<T>::window.get() );
+    SDL_BlitSurface( pngSurface.get(), NULL, APP::FirstGraphics<T>::screenSurface.get(), NULL );
+    SDL_UpdateWindowSurface( APP::FirstGraphics<T>::window.get() );
 }
 
-template <typename T>
+template<typename T>
 ImageApp::Imagefetch<T>::~Imagefetch(void) noexcept{
     std::cout << "Imagefetch destructor called" << std::endl;
     //Destroy window
