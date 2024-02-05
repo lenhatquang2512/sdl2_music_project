@@ -10,5 +10,6 @@ cmake ..
 
 make 
 
-./mainClassSample
+# ./mainClassSample
+./sdl_demo
 
