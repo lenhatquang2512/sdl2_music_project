@@ -300,15 +300,17 @@ bool loadMedia()
 	//Loading success flag
 	bool success = true;
 
+	// std::string path = "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/";
+
 	//Load prompt texture
-	if( !gPromptTexture.loadFromFile( "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/prompt.png" ) )
+	if( !gPromptTexture.loadFromFile( "../music_files/prompt.png" ) )
 	{
 		printf( "Failed to load prompt texture!\n" );
 		success = false;
 	}
 
 	//Load music
-	gMusic = Mix_LoadMUS( "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/beat.wav");
+	gMusic = Mix_LoadMUS( "../music_files/2h-RPTMCK-9608193.mp3");
 	if( gMusic == NULL )
 	{
 		printf( "Failed to load beat music! SDL_mixer Error: %s\n", Mix_GetError() );
@@ -316,28 +318,28 @@ bool loadMedia()
 	}
 	
 	//Load sound effects
-	gScratch = Mix_LoadWAV( "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/scratch.wav" );
+	gScratch = Mix_LoadWAV( "../music_files/scratch.wav" );
 	if( gScratch == NULL )
 	{
 		printf( "Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
 		success = false;
 	}
 	
-	gHigh = Mix_LoadWAV( "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/high.wav" );
+	gHigh = Mix_LoadWAV( "../music_files/high.wav" );
 	if( gHigh == NULL )
 	{
 		printf( "Failed to load high sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
 		success = false;
 	}
 
-	gMedium = Mix_LoadWAV( "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/medium.wav" );
+	gMedium = Mix_LoadWAV( "../music_files/medium.wav" );
 	if( gMedium == NULL )
 	{
 		printf( "Failed to load medium sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
 		success = false;
 	}
 
-	gLow = Mix_LoadWAV( "/home/quang_le/quang_prog/test/test_code_cpp_tut/sdl_tut/sdl_demo/music_files/low.wav" );
+	gLow = Mix_LoadWAV( "../music_files/low.wav" );
 	if( gLow == NULL )
 	{
 		printf( "Failed to load low sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
