@@ -151,7 +151,7 @@ ImageApp::Imagefetch<T>::~Imagefetch(void) noexcept{
 int main(int argc, char  **argv) {
     ImageApp::Imagefetch<int> myObj;
     myObj.process();
-    std::string path{"/home/khanh/study/CPP_Code/sdl2_music_project/src/anh_gai.png"};
+    std::string path{"../img/anh_gai.png"};
     myObj.loadMedia(path);
 
     //Main loop flag
