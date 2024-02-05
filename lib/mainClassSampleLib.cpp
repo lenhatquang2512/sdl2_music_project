@@ -1,6 +1,6 @@
 #include "mainClassSample.h"
 
-
+template<typename T>
 APP::FirstGraphics<T>::FirstGraphics(void):
     screen_width(640),
     screen_height(480),
