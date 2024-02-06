@@ -3,11 +3,11 @@ cmake_minimum_required(VERSION 3.0.0)
 project(sdl_demo VERSION 0.1.0 LANGUAGES C CXX)
 
 if(NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 14) # Default to C++14
+    set(CMAKE_CXX_STANDARD 17) # Default to C++17
 endif()
 
 set(CMAKE_BUILD_TYPE "Release")
-# set(CMAKE_CXX_FLAGS "-std=c++14") 
+# set(CMAKE_CXX_FLAGS "-std=c++17") 
 set(CMAKE_CXX_FLAGS_RELEASE "-O0 -Wall -Wextra -Wpedantic -g")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
