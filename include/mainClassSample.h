@@ -6,14 +6,20 @@
 #include <iostream>
 #include <memory>
 
+#define PRINT_CMD(x) (std::cout << x << std::endl)
+
 namespace APP{
 template<typename T>
 class FirstGraphics{
 public:
     explicit FirstGraphics(void);
-    FirstGraphics(T, T);
+    explicit FirstGraphics(T width, T height);
     ~FirstGraphics(void) noexcept;
     void process(void);
+    bool loadMedia(void);
+    bool init(void);
+    //Load individual images
+    std::shared_ptr<SDL_Surface> loadSurface(void);
 
 
 protected:
@@ -27,6 +33,19 @@ protected:
 
      //The surface contained by the window
     std::shared_ptr<SDL_Surface> screenSurface; 
+    
+    //Event happens
+    SDL_Event  event;
+
+    //The image we will load and show on the screen
+    std::shared_ptr<SDL_Surface> PNGSurface;
+
+    //Init, loading flags
+    bool isInitSuccess;
+    bool isLoadSuccess;
+
+    std::string path;
+
 
 };
 

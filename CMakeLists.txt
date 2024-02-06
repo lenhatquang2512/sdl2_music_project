@@ -41,9 +41,10 @@ add_library(SDL2_First_Graphics SHARED lib/mainClassSampleLib.cpp) #do not need 
 #Setting sources code and executable names
 set(SDL_PROJECT_SOURCES     
                         # src/health_bar_animation.cpp
-                        # src/mainClassSample.cpp
+                        src/mainClassSample.cpp
                         # src/image_fetch_sample.cpp
-                        src/testSoundBasics.cpp
+                        # src/testSoundBasics.cpp
+                        # lib/mainClassSampleLib.cpp
 )
 set(EXECUTABLE sdl_demo)
 
@@ -51,9 +52,10 @@ set(EXECUTABLE sdl_demo)
 add_executable(${EXECUTABLE} ${SDL_PROJECT_SOURCES})
 target_link_libraries(${EXECUTABLE} PUBLIC 
                                             # ${SDL2_LIBRARIES} 
-                                            SDL2::Main SDL2::Image GL
-                                            SDL2::Net SDL2::Mixer SDL2::Image SDL2::TTF SDL2::GFX 
-                                            ${lib_names} 
+                                            ${lib_names}  # ORDER MATTERS !!!
+                                            SDL2::Main SDL2::Image 
+                                            GL
+                                            SDL2::Net SDL2::Mixer SDL2::TTF SDL2::GFX 
                                             # ${SDL2_IMAGE_LIBRARIES}
                                             # ${SDL2_TTF_LIBRARIES}
 )
@@ -62,13 +64,13 @@ target_include_directories(${EXECUTABLE} PUBLIC
 )
 
 # Individual linking for each separate file
-add_executable(health_bar_animation src/health_bar_animation.cpp)
-target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
-add_executable(mainClassSample src/mainClassSample.cpp)
-target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL ${lib_names})
-target_include_directories(mainClassSample PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+# add_executable(health_bar_animation src/health_bar_animation.cpp)
+# target_link_libraries(health_bar_animation PUBLIC SDL2::Main SDL2::Image GL)
+# add_executable(mainClassSample src/mainClassSample.cpp)
+# target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL ${lib_names})
+# target_include_directories(mainClassSample PUBLIC
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include
+# )
 
 #For testing purposes
 enable_testing()
