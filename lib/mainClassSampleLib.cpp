@@ -28,7 +28,7 @@ APP::FirstGraphics::FirstGraphics(int width,int height):
 bool APP::FirstGraphics::loadFromFile(std::string pathFile){
     std::shared_ptr<SDL_Texture> newTexture;
 
-    std::shared_ptr<SDL_Surface> loadedSurface{ IMG_Load( pathFile.c_str()) };
+    std::shared_ptr<SDL_Surface> loadedSurface =  std::shared_ptr<SDL_Surface>(IMG_Load( pathFile.c_str()),SDL_FreeSurface);
     if (loadedSurface == nullptr){
         std::cout << "Unable to load image " << path  << "! SDL_image Error:" << IMG_GetError() << std::endl; 
     }
@@ -51,7 +51,7 @@ bool APP::FirstGraphics::loadFromFile(std::string pathFile){
 		}
 
 		//Get rid of old loaded surface
-		SDL_FreeSurface( loadedSurface.get() );
+		// SDL_FreeSurface( loadedSurface.get() );
     }
     mTexture = newTexture;
     return mTexture != nullptr;
@@ -347,7 +347,8 @@ APP::FirstGraphics::~FirstGraphics(void) noexcept{
     //Destroy window
 	// SDL_DestroyWindow( window.get() ); //Core dump if try to run because we use share pointer
 
-	// //Quit SDL subsystems
+    // 	Mix_Quit();
+	// IMG_Quit();
 	// SDL_Quit();
 }
 
