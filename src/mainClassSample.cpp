@@ -2,7 +2,7 @@
 #include "mainClassSample.h"
 
 int main(int argc, char  **argv) {
-    APP::FirstGraphics<int> myObj;
+    APP::FirstGraphics myObj;
     // ImageApp::Imagefetch<int> myObj;
     myObj.process();
 
