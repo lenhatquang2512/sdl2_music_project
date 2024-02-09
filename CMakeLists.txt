@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0.0)
 project(sdl_demo VERSION 0.1.0 LANGUAGES C CXX)
 
 if(NOT CMAKE_CXX_STANDARD)
-    set(CMAKE_CXX_STANDARD 14) # Default to C++14
+    set(CMAKE_CXX_STANDARD 17) # Default to C++14
 endif()
 
 set(CMAKE_BUILD_TYPE "Release")
@@ -42,8 +42,8 @@ add_library(SDL2_First_Graphics SHARED lib/mainClassSampleLib.cpp) #do not need 
 set(SDL_PROJECT_SOURCES     
                         # src/health_bar_animation.cpp
                         # src/mainClassSample.cpp
-                        # src/image_fetch_sample.cpp
-                        src/testSoundBasics.cpp
+                        src/image_fetch_sample.cpp
+                        # src/testSoundBasics.cpp
 )
 set(EXECUTABLE sdl_demo)
 
@@ -69,6 +69,13 @@ target_link_libraries(mainClassSample PUBLIC SDL2::Main SDL2::Image GL ${lib_nam
 target_include_directories(mainClassSample PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+add_executable(showdir src/showdir.cpp)
+target_link_libraries(showdir PUBLIC SDL2::Main SDL2::Image SDL2::TTF GL ${lib_names})
+add_executable(taglib_sample src/taglib_sample.cpp)
+target_link_libraries(taglib_sample PUBLIC SDL2::Main SDL2::Image SDL2::TTF GL tag ${lib_names})
+
+add_executable(testButton src/testButton.cpp)
+target_link_libraries(testButton PUBLIC SDL2::Main SDL2::Image SDL2::TTF GL ${lib_names})
 
 #For testing purposes
 enable_testing()
